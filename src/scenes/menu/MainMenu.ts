@@ -1,6 +1,7 @@
 import * as PIXI from 'pixi.js';
 import { AceOfShadowsScene } from 'scenes/game/ace-of-shadows/AceOfShadowsScene';
 import { MagicWordsScene } from 'scenes/game/magic-words/MagicWordsScene';
+import { TimedLoaderScene } from 'scenes/loading/TimedLoaderScene';
 import { PhoenixFlameScene } from 'scenes/game/phoenix-flame/PhoenixFlameScene';
 import { Button } from 'ui/Button';
 
@@ -38,15 +39,30 @@ export class MainMenu extends PIXI.Container {
     const buttons = [
       {
         label: 'Ace of Shadows',
-        action: () => this.game.changeScene(new AceOfShadowsScene(this.game)),
+        action: () =>
+          this.game.changeScene(
+            new TimedLoaderScene(this.game, () =>
+              this.game.changeScene(new AceOfShadowsScene(this.game)),
+            ),
+          ),
       },
       {
         label: 'Magic Words',
-        action: () => this.game.changeScene(new MagicWordsScene(this.game)),
+        action: () =>
+          this.game.changeScene(
+            new TimedLoaderScene(this.game, () =>
+              this.game.changeScene(new MagicWordsScene(this.game)),
+            ),
+          ),
       },
       {
         label: 'Phoenix Flame',
-        action: () => this.game.changeScene(new PhoenixFlameScene(this.game)),
+        action: () =>
+          this.game.changeScene(
+            new TimedLoaderScene(this.game, () =>
+              this.game.changeScene(new PhoenixFlameScene(this.game)),
+            ),
+          ),
       },
     ];
 

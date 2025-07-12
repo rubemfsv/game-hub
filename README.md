@@ -32,6 +32,7 @@ npm run build
 - **Fire sprites**: [Kenney Particle Pack](http://kenney.nl/assets/smoke-particles) — CC0.
 - **Parallax space background**: Artwork by Luis Zuno ([@ansimuz](https://twitter.com/ansimuz)) — CC0. More resources at <https://ansimuz.com>.
 - **Menu background**: “Pixel rain abstract background” by Freepik — free for personal & commercial use with attribution (<https://www.freepik.com>).
+- **Ace of Shadows background**: “Designed by starline / Freepik” — personal & commercial use allowed with attribution. Full license terms: <http://www.freepik.com/terms_of_use>. Please include the following HTML attribution when used on the web: `<a href="http://www.freepik.com">Designed by starline / Freepik</a>`
 
 
 ### Prerequisites
