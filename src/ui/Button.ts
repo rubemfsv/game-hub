@@ -55,6 +55,10 @@ export class Button extends PIXI.Container {
     }
   }
 
+  public setText(newLabel: string): void {
+    this.text.text = newLabel;
+  }
+
   private onPointerOver() {
     this.glowFilter.blur = 6;
     this.glowFilter.alpha = 0.6;
