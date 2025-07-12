@@ -44,7 +44,6 @@ export class Deck {
     const card = this.cards.pop()!;
     this.discardPile.push(card);
 
-    // Convert discard pile's position to the card's parent's local space
     const worldPos = discardContainer.toGlobal(new PIXI.Point());
     const localPos = card.parent.toLocal(worldPos);
 
@@ -63,8 +62,8 @@ export class Deck {
   }
 
   public destroy(): void {
-    this.cards.forEach(card => card.destroy());
-    this.discardPile.forEach(card => card.destroy());
+    this.cards.forEach((card) => card.destroy());
+    this.discardPile.forEach((card) => card.destroy());
     gsap.killTweensOf(this.cards);
     gsap.killTweensOf(this.discardPile);
   }
