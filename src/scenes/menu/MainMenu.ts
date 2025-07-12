@@ -4,12 +4,19 @@ import { MagicWordsScene } from 'scenes/game/magic-words/MagicWordsScene';
 import { PhoenixFlameScene } from 'scenes/game/phoenix-flame/PhoenixFlameScene';
 import { Button } from 'ui/Button';
 
+const BACKGROUND_IMAGE = '/assets/images/menu.jpg';
+
 export class MainMenu extends PIXI.Container {
   private game: any;
+  private background: PIXI.Sprite;
 
   constructor(game: any) {
     super();
     this.game = game;
+
+    this.background = PIXI.Sprite.from(BACKGROUND_IMAGE);
+    this.addChild(this.background);
+
     this.createMenu();
   }
 
@@ -55,9 +62,14 @@ export class MainMenu extends PIXI.Container {
   }
 
   public onResize(width: number, height: number) {
-    const title = this.children[0] as PIXI.Text;
+    const title = this.children.find(
+      (c) => c instanceof PIXI.Text,
+    ) as PIXI.Text;
     title.x = width / 2;
     title.y = height * 0.25;
+
+    this.background.width = width;
+    this.background.height = height;
 
     const buttons = this.children.filter(
       (child) => child instanceof Button,

@@ -31,6 +31,7 @@ npm run build
 
 - **Fire sprites**: [Kenney Particle Pack](http://kenney.nl/assets/smoke-particles) — CC0.
 - **Parallax space background**: Artwork by Luis Zuno ([@ansimuz](https://twitter.com/ansimuz)) — CC0. More resources at <https://ansimuz.com>.
+- **Menu background**: “Pixel rain abstract background” by Freepik — free for personal & commercial use with attribution (<https://www.freepik.com>).
 
 
 ### Prerequisites
@@ -65,7 +66,7 @@ npm run build
 Husky runs a **pre-commit** hook that automatically formats the codebase (`npm run format:write`) and fixes lint errors (`npm run lint:fix`).
 A commit will be aborted only if ESLint encounters errors it cannot fix automatically.
 
-You don’t have to do anything—hooks are installed automatically on `npm install` via the `prepare` script.
+You don’t have to do anything — hooks are installed automatically on `npm install` via the `prepare` script.
 
 ## 📜 Available Scripts & Tooling
 
