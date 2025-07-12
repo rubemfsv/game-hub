@@ -16,7 +16,11 @@ export abstract class BaseScene extends PIXI.Container {
     this.addChild(this.header);
   }
 
-  public onResize(width: number, height: number) {
-    this.header.onResize(width, height);
+  public onResize(width: number, _height: number): void {
+    // Some derived scenes rely on the same (width, height) signature.
+    // The header only needs width, so we void the variable to avoid the
+    // unused-parameter lint without altering the method contract.
+    void _height;
+    this.header.onResize(width);
   }
 }
