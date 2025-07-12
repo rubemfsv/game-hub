@@ -5,7 +5,7 @@ import { Deck } from './Deck';
 const BACKGROUND_IMAGE = '/assets/images/ace-of-shadows.jpg';
 
 /**
- * Scene that demonstrates theAce-of-Shadows mini-game card-dealing animation.
+ * Scene that demonstrates the Ace-of-Shadows mini-game card-dealing animation.
  *
  * It uses a `Deck` instance (draw pile) and a `discardPile` container. Every second the scene
  * animates the top card from the deck to the discard pile until the deck is empty.

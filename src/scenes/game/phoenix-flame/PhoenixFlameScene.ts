@@ -2,6 +2,12 @@ import * as PIXI from 'pixi.js';
 import { BaseScene } from 'scenes/BaseScene';
 import { Particle } from './Particle';
 
+/**
+ * Scene that demonstrates a continuous phoenix flame effect.
+ *
+ * It preloads a small atlas of flame frames, instantiates a pool of `Particle` sprites,
+ * and emits them each tick with simple physics to create a rising flame.
+ */
 export class PhoenixFlameScene extends BaseScene {
   private particles: Particle[] = [];
   private particleContainer: PIXI.ParticleContainer;
@@ -9,6 +15,9 @@ export class PhoenixFlameScene extends BaseScene {
   private flameIndex = 0;
   private emitter: PIXI.Point;
 
+  /**
+   * @param game - Reference to the main `Game` singleton used for renderer and ticker.
+   */
   constructor(game: any) {
     super(game, 'Phoenix Flame');
 
@@ -27,6 +36,9 @@ export class PhoenixFlameScene extends BaseScene {
     this.loadAssets();
   }
 
+  /**
+   * Load flame textures asynchronously and start the update loop when done.
+   */
   private async loadAssets(): Promise<void> {
     try {
       const flamePaths = Array.from(
@@ -43,6 +55,9 @@ export class PhoenixFlameScene extends BaseScene {
     }
   }
 
+  /**
+   * Populate the particle pool and particle container.
+   */
   private initializeParticles(): void {
     const textures = this.flameTextures;
 
@@ -55,6 +70,10 @@ export class PhoenixFlameScene extends BaseScene {
     }
   }
 
+  /**
+   * Activate an inactive particle from the pool, position it at the emitter,
+   * and give it initial velocity / life.
+   */
   private emitParticle(): void {
     const particle = this.particles.find((p) => !p.visible);
     if (!particle) return;
@@ -73,6 +92,9 @@ export class PhoenixFlameScene extends BaseScene {
     particle.life = Math.random() * 40 + 50;
   }
 
+  /**
+   * Per-frame update: emit new particles and update active ones.
+   */
   private update(delta: number): void {
     this.emitParticle();
 
@@ -94,11 +116,17 @@ export class PhoenixFlameScene extends BaseScene {
     });
   }
 
+  /**
+   * Keep the emitter anchored to the bottom centre of the screen on resize.
+   */
   public onResize(width: number, height: number): void {
     super.onResize(width, height);
     this.emitter.set(width / 2, height * 0.8);
   }
 
+  /**
+   * Clean-up scene resources; currently relies on BaseScene but retained for future.
+   */
   public destroy(options?: PIXI.IDestroyOptions | boolean): void {
     super.destroy(options);
   }
