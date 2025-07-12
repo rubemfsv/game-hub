@@ -7,10 +7,10 @@ import { Button } from 'ui/Button';
 
 const BACKGROUND_IMAGE = '/assets/images/menu.jpg';
 
-/**
+/**‰‰
  * Main entry scene presenting buttons to launch each mini-game.
  *
- * Uses responsive layout so it works in both portrait and landscape modes.
+ * Uses responsive layout.
  */
 export class MainMenu extends PIXI.Container {
   private game: any;

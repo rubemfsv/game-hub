@@ -1,11 +1,18 @@
 import * as PIXI from 'pixi.js';
 import { DropShadowFilter } from '@pixi/filter-drop-shadow';
 
+/**
+ * Reusable rectangular button with a glow hover effect.
+ */
 export class Button extends PIXI.Container {
   private text: PIXI.Text;
   private background: PIXI.Graphics;
   private glowFilter: DropShadowFilter;
 
+  /**
+   * @param label   - Text to display inside the button.
+   * @param onClick - Callback executed on pointer down.
+   */
   constructor(label: string, onClick: () => void) {
     super();
 
@@ -38,6 +45,9 @@ export class Button extends PIXI.Container {
     this.on('pointerout', this.onPointerOut.bind(this));
   }
 
+  /**
+   * Resize/redraw the button background while keeping text centred.
+   */
   public redraw(width: number, height: number) {
     this.background.clear();
     this.background.beginFill(0x1a1a1a, 0.8);
@@ -55,16 +65,21 @@ export class Button extends PIXI.Container {
     }
   }
 
+  /**
+   * Update button label without reconstructing the text object.
+   */
   public setText(newLabel: string): void {
     this.text.text = newLabel;
   }
 
+  /** Internal hover-in handler. */
   private onPointerOver() {
     this.glowFilter.blur = 6;
     this.glowFilter.alpha = 0.6;
     this.scale.set(1.03);
   }
 
+  /** Internal hover-out handler. */
   private onPointerOut() {
     this.glowFilter.blur = 2;
     this.glowFilter.alpha = 0.25;
