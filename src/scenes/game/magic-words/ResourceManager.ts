@@ -1,13 +1,24 @@
 import * as PIXI from 'pixi.js';
 import { MagicWordsData } from './types';
 
+/**
+ * Helper class that analyses `MagicWordsData` and pre-loads every asset (emoji + avatar)
+ * referenced by the dialogue JSON. It returns ready-to-use textures / sprites so the
+ * scene can be rendered without additional async gaps.
+ */
 export class ResourceManager {
   private data: MagicWordsData;
 
+  /**
+   * @param data - Parsed dialogue JSON as returned by the API.
+   */
   constructor(data: MagicWordsData) {
     this.data = data;
   }
 
+  /**
+   * Load all external images (emoji + avatars) and build GPU resources.
+   */
   public async loadAssets(): Promise<{
     emojiTextures: Record<string, PIXI.Texture>;
     avatarSprites: Record<string, PIXI.Sprite>;
@@ -31,6 +42,11 @@ export class ResourceManager {
     return { emojiTextures, avatarSprites };
   }
 
+  /**
+   * Scan every dialogue line to collect the set of unique emoji placeholders used.
+   *
+   * @returns Set of emoji names (without braces).
+   */
   private getAllEmojiNames(): Set<string> {
     const allEmojiNames = new Set<string>();
     const emojiRegex = /\{([^}]+)\}/g;
@@ -46,6 +62,9 @@ export class ResourceManager {
     return allEmojiNames;
   }
 
+  /**
+   * Extract every distinct character name appearing in the dialogue script.
+   */
   private getAllCharacterNames(): Set<string> {
     const allCharacterNames = new Set<string>();
     this.data.dialogue.forEach((line) => {
@@ -54,6 +73,9 @@ export class ResourceManager {
     return allCharacterNames;
   }
 
+  /**
+   * Build an asset-loader manifest for emoji textures and map their URLs for later lookup.
+   */
   private prepareAssetUrls(allEmojiNames: Set<string>): {
     assetsToLoad: { alias: string; src: string }[];
     emojiUrlMap: Map<string, string>;
@@ -77,6 +99,9 @@ export class ResourceManager {
     return { assetsToLoad, emojiUrlMap };
   }
 
+  /**
+   * Convert loaded emoji images into PIXI.Texture objects.
+   */
   private createEmojiTextures(
     allEmojiNames: Set<string>,
     emojiUrlMap: Map<string, string>,
@@ -89,6 +114,9 @@ export class ResourceManager {
     return emojiTextures;
   }
 
+  /**
+   * Generate remote URLs for each avatar – uses provided URL or fallback DiceBear generation.
+   */
   private prepareAvatarUrls(characterNames: Set<string>): {
     assetsToLoad: { alias: string; src: string }[];
     avatarUrlMap: Map<string, string>;
@@ -110,6 +138,9 @@ export class ResourceManager {
     return { assetsToLoad, avatarUrlMap };
   }
 
+  /**
+   * Create anchor-centred PIXI.Sprite instances from avatar textures.
+   */
   private createAvatarSprites(
     characterNames: Set<string>,
     avatarUrlMap: Map<string, string>,

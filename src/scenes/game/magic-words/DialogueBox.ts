@@ -6,11 +6,22 @@ const BORDER_WIDTH = 4;
 const BOX_COLOR = 0x1e1e1e;
 const TEXT_COLOR = 0xffffff;
 
+/**
+ * UI component responsible for rendering a dialogue panel that can include:
+ *   • A talking character avatar (left or right).
+ *   • Multiline rich-text with inline emoji placeholders (e.g. `{smile}`).
+ *
+ * The component is fully self-contained – you feed it text, avatar sprite and side,
+ * and it lays itself out given the available width / height.
+ */
 export class DialogueBox extends PIXI.Container {
   private mainBox: PIXI.Graphics;
   private contentContainer: PIXI.Container;
   private avatarBox: AvatarBox | null = null;
 
+  /**
+   * Constructs an empty, hidden dialogue box.
+   */
   constructor() {
     super();
 
@@ -20,6 +31,17 @@ export class DialogueBox extends PIXI.Container {
     this.addChild(this.mainBox, this.contentContainer);
   }
 
+  /**
+   * Populate and display the dialogue box.
+   *
+   * @param text           - Raw dialogue string with optional `{emoji}` tags.
+   * @param name           - Character name (used in `AvatarBox`).
+   * @param avatar         - Sprite representing the speaking character.
+   * @param emojiTextures  - Map of emoji name → PIXI.Texture.
+   * @param side           - Which side the avatar should appear on.
+   * @param width          - Max width for the dialogue panel.
+   * @param height         - Max height for the dialogue panel.
+   */
   public show(
     text: string,
     name: string,
@@ -46,6 +68,9 @@ export class DialogueBox extends PIXI.Container {
     this.redraw(side, width, height);
   }
 
+  /**
+   * Hide the dialogue box but keep it in the display list for reuse.
+   */
   public hide(): void {
     this.visible = false;
   }
@@ -103,6 +128,9 @@ export class DialogueBox extends PIXI.Container {
     });
   }
 
+  /**
+   * Re-layout the background box, avatar position, and text container.
+   */
   private redraw(
     side: 'left' | 'right',
     containerWidth: number,

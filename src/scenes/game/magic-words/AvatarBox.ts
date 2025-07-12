@@ -5,12 +5,21 @@ const BORDER_WIDTH = 4;
 const NAME_TEXT_COLOR = 0xffffff;
 const BOX_COLOR = 0x1e1e1e;
 
+/**
+ * Displays a character avatar inside a framed square and an optional name tag below it.
+ *
+ * The component is resolution-independent and can be redrawn when layout changes.
+ */
 export class AvatarBox extends PIXI.Container {
   private frame: PIXI.Graphics;
   private avatar: PIXI.Sprite;
   private nameText: PIXI.Text;
   private nameBackground: PIXI.Graphics;
 
+  /**
+   * @param avatar - Pre-loaded sprite for the character.
+   * @param name   - Character name to render under the avatar.
+   */
   constructor(avatar: PIXI.Sprite, name: string) {
     super();
 
@@ -30,6 +39,10 @@ export class AvatarBox extends PIXI.Container {
     this.redraw();
   }
 
+  /**
+   * (Re)calculate geometry and repaint graphics/text.
+   * Call this whenever the box size should change.
+   */
   private redraw(): void {
     const avatarSize = 100;
     const padding = 10;

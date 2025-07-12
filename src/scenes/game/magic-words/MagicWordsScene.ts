@@ -8,6 +8,12 @@ import { ResourceManager } from './ResourceManager';
 
 const BACKGROUND_IMAGE = '/assets/images/parallax-space-backgound.png';
 
+/**
+ * Scene that demonstrates an interactive visual novel-style scene that showcases the "Magic Words" dialogue system.
+ *
+ * It loads dialogue data from an API, fetches required emoji and avatar assets, and renders
+ * a dynamic dialogue box with type-safe support for inline emojis (e.g. `{smile}`).
+ */
 export class MagicWordsScene extends BaseScene {
   private background: PIXI.TilingSprite | null = null;
   private dialogueBox: DialogueBox | null = null;
@@ -17,11 +23,17 @@ export class MagicWordsScene extends BaseScene {
   private avatarSprites: Record<string, PIXI.Sprite> = {};
   private nextButton: Button | null = null;
 
+  /**
+   * @param game - Reference to the main `Game` singleton.
+   */
   constructor(game: any) {
     super(game, 'Magic Words');
     this.loadGameData();
   }
 
+  /**
+   * Asynchronously fetch JSON data and pre-load all remote assets before initialising the scene.
+   */
   private async loadGameData(): Promise<void> {
     try {
       const [data] = await Promise.all([
@@ -47,6 +59,9 @@ export class MagicWordsScene extends BaseScene {
     }
   }
 
+  /**
+   * Called once assets & data are ready: constructs display objects and positions them.
+   */
   private initializeScene(): void {
     if (!this.data) return;
 
@@ -66,6 +81,9 @@ export class MagicWordsScene extends BaseScene {
     this.onResize(width, height);
   }
 
+  /**
+   * Advance the dialogue index, looping back to the start when finished.
+   */
   private nextDialogueLine(): void {
     if (!this.data) return;
 
@@ -77,6 +95,9 @@ export class MagicWordsScene extends BaseScene {
     this.showCurrentDialogueLine();
   }
 
+  /**
+   * Render current dialogue line with correct avatar, text, and emoji sprites.
+   */
   private showCurrentDialogueLine(): void {
     if (!this.data || !this.dialogueBox) return;
 
@@ -122,6 +143,9 @@ export class MagicWordsScene extends BaseScene {
     }
   }
 
+  /**
+   * Keep background and UI responsive to viewport changes.
+   */
   public onResize(width: number, height: number): void {
     super.onResize(width, height);
 
@@ -146,6 +170,9 @@ export class MagicWordsScene extends BaseScene {
     }
   }
 
+  /**
+   * Clean-up; currently defers to `BaseScene` but provided for future resource disposal.
+   */
   public destroy(options?: PIXI.IDestroyOptions | boolean): void {
     super.destroy(options);
   }
