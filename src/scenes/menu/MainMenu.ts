@@ -7,10 +7,18 @@ import { Button } from 'ui/Button';
 
 const BACKGROUND_IMAGE = '/assets/images/menu.jpg';
 
+/**
+ * Main entry scene presenting buttons to launch each mini-game.
+ *
+ * Uses responsive layout so it works in both portrait and landscape modes.
+ */
 export class MainMenu extends PIXI.Container {
   private game: any;
   private background: PIXI.Sprite;
 
+  /**
+   * @param game - Reference to the `Game` singleton controlling scene changes.
+   */
   constructor(game: any) {
     super();
     this.game = game;
@@ -21,6 +29,9 @@ export class MainMenu extends PIXI.Container {
     this.createMenu();
   }
 
+  /**
+   * Create title text and dynamically generate game selection buttons.
+   */
   private createMenu() {
     const title = new PIXI.Text('GameHub', {
       fontSize: 48,
@@ -77,6 +88,9 @@ export class MainMenu extends PIXI.Container {
     );
   }
 
+  /**
+   * Re-arrange title and buttons to stay centred/responsive.
+   */
   public onResize(width: number, height: number) {
     const title = this.children.find(
       (c) => c instanceof PIXI.Text,
