@@ -60,9 +60,20 @@ npm run build
     ```
     The application will open automatically in your default browser at `http://localhost:8080`.
 
-## 📜 Available Scripts
+### Git Hooks (Husky)
+
+Husky runs a **pre-commit** hook that automatically formats the codebase (`npm run format:write`) and fixes lint errors (`npm run lint:fix`).
+A commit will be aborted only if ESLint encounters errors it cannot fix automatically.
+
+You don’t have to do anything—hooks are installed automatically on `npm install` via the `prepare` script.
+
+## 📜 Available Scripts & Tooling
 
 - `npm start`: Runs the application in development mode with hot-reloading.
-- `npm run build`: Bundles the application for production in the `dist` folder.
-- `npm run lint`: Lints all TypeScript files in the `src` directory.
-- `npm run format`: Automatically formats all TypeScript files in the `src` directory.
+- `npm run build`: Bundles the application for production in the `public` folder.
+- `npm run lint`: Runs ESLint on all TypeScript files.
+- `npm run lint:fix`: ESLint with `--fix` to auto-correct issues.
+- `npm run format:check`: Prettier check (no writes).
+- `npm run format:write`: Prettier write (auto-formats source).
+- `npm run format`: Alias for `format:write`.
+- `npm run prepare`: Installs Husky git hooks.
