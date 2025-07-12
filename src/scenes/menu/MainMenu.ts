@@ -1,7 +1,7 @@
 import * as PIXI from 'pixi.js';
 import { AceOfShadowsScene } from 'scenes/game/ace-of-shadows/AceOfShadowsScene';
 import { MagicWordsScene } from 'scenes/game/magic-words/MagicWordsScene';
-import { PhoenixFlameScene } from 'scenes/game/PhoenixFlame';
+import { PhoenixFlameScene } from 'scenes/game/phoenix-flame/PhoenixFlameScene';
 import { Button } from 'ui/Button';
 
 export class MainMenu extends PIXI.Container {
