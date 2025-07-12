@@ -1,26 +1,29 @@
-const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const CopyWebpackPlugin = require("copy-webpack-plugin");
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
-  entry: "./src/index.ts",
-  mode: "development",
-  devtool: process.env.NODE_ENV === 'production' ? 'source-map' : 'eval-cheap-module-source-map',
+  entry: './src/index.ts',
+  mode: 'development',
+  devtool:
+    process.env.NODE_ENV === 'production'
+      ? 'source-map'
+      : 'eval-cheap-module-source-map',
   devServer: {
-    static: "./public",
+    static: './public',
     hot: true,
   },
   module: {
     rules: [
       {
         test: /\.tsx?$/,
-        use: "ts-loader",
+        use: 'ts-loader',
         exclude: /node_modules/,
       },
     ],
   },
   resolve: {
-    extensions: [".tsx", ".ts", ".js"],
+    extensions: ['.tsx', '.ts', '.js'],
     alias: {
       core: path.resolve(__dirname, 'src/core'),
       infra: path.resolve(__dirname, 'src/infra'),
@@ -46,11 +49,11 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: "GameHub",
-      template: "src/index.html",
+      title: 'GameHub',
+      template: 'src/index.html',
     }),
     new CopyWebpackPlugin({
-      patterns: [{ from: "src/assets", to: "assets", noErrorOnMissing: true }],
+      patterns: [{ from: 'src/assets', to: 'assets', noErrorOnMissing: true }],
     }),
   ],
 };
