@@ -1,10 +1,6 @@
 import * as PIXI from 'pixi.js';
 import { BaseScene } from 'scenes/BaseScene';
 
-/**
- * Displays a simple "Loading…" message for the given delay and then executes the callback.
- * Useful for lightweight transitions where real asset streaming isn't necessary.
- */
 export class TimedLoaderScene extends BaseScene {
   private onDone: () => void;
   private delayMs: number;
@@ -22,13 +18,11 @@ export class TimedLoaderScene extends BaseScene {
     label.anchor.set(0.5);
     this.addChild(label);
 
-    // Center label initially
     this.onResize(
       this.game.getApp().screen.width,
       this.game.getApp().screen.height,
     );
 
-    // Schedule scene change after delay
     setTimeout(() => {
       this.onDone();
     }, this.delayMs);
