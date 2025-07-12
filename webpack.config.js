@@ -5,9 +5,9 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 module.exports = {
   entry: "./src/index.ts",
   mode: "development",
-  devtool: "inline-source-map",
+  devtool: process.env.NODE_ENV === 'production' ? 'source-map' : 'eval-cheap-module-source-map',
   devServer: {
-    static: "./dist",
+    static: "./public",
     hot: true,
   },
   module: {
@@ -29,9 +29,19 @@ module.exports = {
       utils: path.resolve(__dirname, 'src/utils'),
     },
   },
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+    },
+  },
+  performance: {
+    hints: process.env.NODE_ENV === 'production' ? 'warning' : false,
+    maxAssetSize: 512000, // 500 KiB
+    maxEntrypointSize: 512000,
+  },
   output: {
-    filename: "bundle.js",
-    path: path.resolve(__dirname, "dist"),
+    filename: '[name].[contenthash].js',
+    path: path.resolve(__dirname, 'public'),
     clean: true,
   },
   plugins: [
