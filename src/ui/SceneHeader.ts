@@ -17,7 +17,7 @@ export class SceneHeader extends PIXI.Container {
     this.title.anchor.set(0.5);
     this.addChild(this.title);
 
-    this.backButton = new Button('< Back', backAction);
+    this.backButton = new Button('Home', backAction);
     this.addChild(this.backButton);
   }
 
@@ -28,7 +28,7 @@ export class SceneHeader extends PIXI.Container {
     const buttonWidth = 120;
     const buttonHeight = 40;
     this.backButton.redraw(buttonWidth, buttonHeight);
-    this.backButton.x = 20;
+    this.backButton.x = width - buttonWidth - 20;
     this.backButton.y = 20;
   }
 }
