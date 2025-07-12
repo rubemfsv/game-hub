@@ -1,0 +1,5 @@
+#!/bin/sh
+npm run format:write
+npm run lint:fix
+
+git add -A

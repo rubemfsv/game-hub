@@ -7,7 +7,11 @@
     "start": "webpack serve --open",
     "build": "webpack --mode=production",
     "lint": "eslint 'src/**/*.ts'",
-    "format": "prettier --write 'src/**/*.ts'"
+    "lint:fix": "eslint 'src/**/*.ts' --fix",
+    "format:check": "prettier --check 'src/**/*.ts'",
+    "format:write": "prettier --write 'src/**/*.ts'",
+    "prepare": "husky install",
+    "format": "npm run format:write"
   },
   "dependencies": {
     "@pixi/filter-drop-shadow": "^5.2.0",
@@ -19,7 +23,7 @@
     "@typescript-eslint/eslint-plugin": "^8.36.0",
     "@typescript-eslint/parser": "^8.36.0",
     "copy-webpack-plugin": "^12.0.2",
-    "eslint": "^9.31.0",
+    "eslint": "^8.56.0",
     "eslint-config-prettier": "^10.1.5",
     "eslint-plugin-prettier": "^5.5.1",
     "html-webpack-plugin": "^5.6.0",
@@ -28,6 +32,7 @@
     "typescript": "^5.4.5",
     "webpack": "^5.91.0",
     "webpack-cli": "^5.1.4",
-    "webpack-dev-server": "^5.0.4"
+    "webpack-dev-server": "^5.0.4",
+    "husky": "^9.0.0"
   }
 }

@@ -1,7 +1,7 @@
 import * as PIXI from 'pixi.js';
 import { BaseScene } from 'scenes/BaseScene';
 import { DialogueBox } from './DialogueBox';
-import { MagicWordsData, Avatar } from './types';
+import { MagicWordsData } from './types';
 import { Button } from 'ui/Button';
 import { fetchMagicWordsData } from 'infra/api';
 import { ResourceManager } from './ResourceManager';

@@ -21,7 +21,7 @@ export class SceneHeader extends PIXI.Container {
     this.addChild(this.backButton);
   }
 
-  public onResize(width: number, height: number) {
+  public onResize(width: number) {
     this.title.x = width / 2;
     this.title.y = 40;
 

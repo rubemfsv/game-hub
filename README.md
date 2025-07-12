@@ -6,9 +6,9 @@ A lightweight PixiJS + TypeScript playground for mini-games.
 
 ## Features
 
-- 🔥 Phoenix Flame particle demo (10-sprite fire)
 - 🃏 Ace of Shadows card stack (WIP)
 - 💬 Magic Words RPG-style dialogue system
+- 🔥 Phoenix Flame particle demo (10-sprite fire)
 - Clean folder structure with absolute imports (`core`, `scenes`, `ui`, `utils`)
 - Webpack 5 + ESLint + Prettier
 
@@ -26,11 +26,16 @@ npm run build
 ```
 
 ---
-MIT © Rubem Vasconcelos
+
+## Assets Credits
+
+- **Fire sprites**: [Kenney Particle Pack](http://kenney.nl/assets/smoke-particles) — CC0.
+- **Parallax space background**: Artwork by Luis Zuno ([@ansimuz](https://twitter.com/ansimuz)) — CC0. More resources at <https://ansimuz.com>.
+
 
 ### Prerequisites
 
-- **Node.js**: A recent LTS version (e.g., 18 or 20) is required. You can use a version manager like [nvm](https://github.com/nvm-sh/nvm) to manage your Node.js versions.
+- **Node.js**: A recent LTS version (e.g., 18, 20, or 22) is required. You can use a version manager like [nvm](https://github.com/nvm-sh/nvm) to manage your Node.js versions.
 
 ### Installation & Setup
 
