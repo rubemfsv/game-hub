@@ -23,6 +23,7 @@ module.exports = {
     extensions: [".tsx", ".ts", ".js"],
     alias: {
       core: path.resolve(__dirname, 'src/core'),
+      infra: path.resolve(__dirname, 'src/infra'),
       scenes: path.resolve(__dirname, 'src/scenes'),
       ui: path.resolve(__dirname, 'src/ui'),
       utils: path.resolve(__dirname, 'src/utils'),
