@@ -49,7 +49,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'GameHub',
+      title: 'PlayCentral',
       template: 'src/index.html',
     }),
     new CopyWebpackPlugin({

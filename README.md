@@ -1,4 +1,4 @@
-# GameHub
+# PlayCentral
 
 A lightweight PixiJS + TypeScript playground for mini-games.
 
@@ -43,12 +43,12 @@ npm run build
 
 1.  **Clone the repository:**
     ```sh
-    git clone <repository-url>
+    git clone git@github.com:rubemfsv/play-central.git
     ```
 
 2.  **Navigate to the project directory:**
     ```sh
-    cd gamehub
+    cd play-central
     ```
 
 3.  **Install dependencies:**
