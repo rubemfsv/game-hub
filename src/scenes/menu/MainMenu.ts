@@ -33,7 +33,7 @@ export class MainMenu extends PIXI.Container {
    * Create title text and dynamically generate game selection buttons.
    */
   private createMenu() {
-    const title = new PIXI.Text('GameHub', {
+    const title = new PIXI.Text('PlayCentral', {
       fontSize: 48,
       fill: 0xffffff,
       fontFamily: 'Arial',
